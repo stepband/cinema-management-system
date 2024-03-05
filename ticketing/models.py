@@ -42,7 +42,7 @@ class Screening(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
-    theater_room = models.ForeignKey(TheaterRoom, on_delete=models)
+    theater_room = models.ForeignKey(TheaterRoom, on_delete=models.PROTECT)
 
     def __str__(self):
         return f"{self.movie.title} - {self.date} {self.time}"

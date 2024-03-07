@@ -1,0 +1,102 @@
+[
+  {
+    "model": "ticketing.movie",
+    "pk": 1,
+    "fields": {
+      "title": "The Matrix",
+      "release_date": "1999-03-31",
+      "duration": "02:16:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Inception",
+      "release_date": "2010-07-16",
+      "duration": "02:28:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 3,
+    "fields": {
+      "title": "The Shawshank Redemption",
+      "release_date": "1994-10-14",
+      "duration": "02:22:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 4,
+    "fields": {
+      "title": "Pulp Fiction",
+      "release_date": "1994-10-14",
+      "duration": "02:34:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 5,
+    "fields": {
+      "title": "The Dark Knight",
+      "release_date": "2008-07-18",
+      "duration": "02:32:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 6,
+    "fields": {
+      "title": "The Lord of the Rings: The Return of the King",
+      "release_date": "2003-12-17",
+      "duration": "03:21:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 7,
+    "fields": {
+      "title": "Forrest Gump",
+      "release_date": "1994-07-06",
+      "duration": "02:22:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 8,
+    "fields": {
+      "title": "The Lion King",
+      "release_date": "1994-06-15",
+      "duration": "01:28:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 9,
+    "fields": {
+      "title": "Gladiator",
+      "release_date": "2000-05-05",
+      "duration": "02:35:00",
+      "genre": []
+    }
+  },
+  {
+    "model": "ticketing.movie",
+    "pk": 10,
+    "fields": {
+      "title": "Avatar",
+      "release_date": "2009-12-18",
+      "duration": "02:42:00",
+      "genre": []
+    }
+  }
+]

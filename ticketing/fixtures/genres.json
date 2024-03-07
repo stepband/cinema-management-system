@@ -1,0 +1,4 @@
+[
+  {"model": "ticketing.genre", "pk": 1, "fields": {"name": "Action"}},
+  {"model": "ticketing.genre", "pk": 2, "fields": {"name": "Comedy"}}
+]

@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {% block title %}All movies{% endblock %}
 
 {% block content %}
@@ -14,7 +16,9 @@
     <tbody>
       {% for movie in movies %}
         <tr>
-          <td>{{ movie.title }}</td>
+          <td>
+            <a href="{% url 'movie_detail' movie.pk %}">{{ movie.title }}</a>
+          </td>
           <td>
             {% for genre in movie.genre.all %}
               {{ genre.name }}

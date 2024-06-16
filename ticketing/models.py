@@ -35,7 +35,7 @@ class Seat(models.Model):
     is_available = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"Seat {self.row_number}-{self.column_number} ({'Available' if self.is_available else 'Booked'})"
+        return f"{self.theater_room}: seat {self.row_number}-{self.column_number} ({'Available' if self.is_available else 'Booked'})"
 
 
 class Screening(models.Model):

@@ -8,6 +8,9 @@ class MovieListView(ListView):
     template_name = 'index.html'
     context_object_name = 'movies'
 
+    def get_queryset(self):
+        return Movie.objects.prefetch_related('screening_set').all()
+
 
 class MovieDetailView(DetailView):
     model = Movie

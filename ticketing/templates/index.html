@@ -27,6 +27,9 @@
           <td>{{ movie.release_date }}</td>
           <td>{{ movie.duration }}</td>
         </tr>
+        {% for screening in movie.screening_set.all %}
+          <li>{{ screening.date }} {{ screening.time }}</li>
+        {% endfor %}
       {% endfor %}
     </tbody>
   </table>

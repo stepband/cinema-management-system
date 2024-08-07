@@ -12,4 +12,12 @@
           {% if not forloop.last %}, {% endif %}
         {% endfor %}
     </p>
+    <h2>Available Screenings</h2>
+    <ul>
+      {% for screening in movie.screening_set.all %}
+        <li>
+          <a href="{% url 'booking' screening.id %}">{{ screening.time }}</a> on {{ screening.date }} in {{ screening.theater_room.room_name }}
+        </li>
+      {% endfor %}
+    </ul>
 {% endblock %}

@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 
 from .forms import BookingForm
-from .models import Movie
+from .models import Movie, Screening
 
 
 class MovieListView(ListView):
@@ -20,21 +20,19 @@ class MovieDetailView(DetailView):
     context_object_name = 'movie'
 
 
-def booking(request):
-    if request.method == "POST":
-        form = BookingForm(request.POST)
+def booking(request, screening_id):
+    screening = get_object_or_404(Screening, id=screening_id)
+
+    if request.method == 'POST':
+        form = BookingForm(request.POST, screening=screening)
         if form.is_valid():
             ticket = form.save(commit=False)
+            ticket.screening = screening
             ticket.user = request.user
             ticket.save()
-
-            seat = ticket.seat
-            seat.is_available = False
-            seat.save()
-
-            return redirect("/booking")
+            return redirect('index')
     else:
-        form = BookingForm()
+        form = BookingForm(screening=screening)
 
-    return render(request, 'ticket_booking.html', {'form': form})
+    return render(request, 'ticket_booking.html', {'form': form, 'screening': screening})
 

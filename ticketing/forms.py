@@ -1,11 +1,23 @@
 from django import forms
+from django.forms import ModelChoiceField
+
 from .models import Ticket, Screening, Seat
 
 
 class BookingForm(forms.ModelForm):
-    screening = forms.ModelChoiceField(queryset=Screening.objects.all(), empty_label=None, label="Select Screening")
-    seat = forms.ModelChoiceField(queryset=Seat.objects.filter(is_available=True), label="Select seat")
+    seat = ModelChoiceField(queryset=Seat.objects.all(), required=True, label="Select seat")
 
     class Meta:
         model = Ticket
-        fields = ['screening', 'seat']
+        fields = ['seat']
+
+    def __init__(self, *args, **kwargs):
+        screening = kwargs.pop('screening', None)
+        super().__init__(*args, **kwargs)
+        if screening:
+            self.fields['seat'].queryset = Seat.objects.filter(
+                theater_room=screening.theater_room
+            ).exclude(
+                id__in=Ticket.objects.filter(screening=screening).values_list('seat_id', flat=True)
+            )
+

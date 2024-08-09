@@ -1,8 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
 from .forms import BookingForm
-from .models import Movie, Screening
+from .models import Movie, Screening, Ticket
 
 
 class MovieListView(ListView):
@@ -30,9 +32,20 @@ def booking(request, screening_id):
             ticket.screening = screening
             ticket.user = request.user
             ticket.save()
-            return redirect('index')
+            return redirect(reverse('ticket_detail', args=[ticket.id]))
     else:
         form = BookingForm(screening=screening)
 
     return render(request, 'ticket_booking.html', {'form': form, 'screening': screening})
+
+
+class TicketDetailView(LoginRequiredMixin, DetailView):
+    model = Ticket
+    template_name = 'ticket_detail.html'
+    context_object_name = 'ticket'
+
+    def get_ticket(self, **kwargs):
+        ticket = Ticket.objects.get(id=self.kwargs['pk'], user=self.request.user)
+        return ticket
+
 

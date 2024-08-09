@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h>Ticket details</h>
+  <p>Movie: {{ ticket.screening.movie.title }}</p>
+  <p>Time: {{ ticket.screening.time }}</p>
+{% endblock %}
